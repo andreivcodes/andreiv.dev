@@ -1,9 +1,22 @@
-import { Flex, Text, Link, ChakraProvider } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Link,
+  ChakraProvider,
+  extendTheme,
+} from "@chakra-ui/react";
 import type { NextPage } from "next";
+
+const theme = extendTheme({
+  config: {
+    useSystemColorMode: true,
+    initialColorMode: "dark",
+  },
+});
 
 const Home: NextPage = () => {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Flex m="6" w="100vw" flexDir="column">
         <Text fontFamily="monospace">Hey, I&rsquo;m Andrei.</Text>
         <Text fontFamily="monospace">I like to build web3 stuff.</Text>
