@@ -9,7 +9,7 @@ import type { NextPage } from "next";
 
 const theme = extendTheme({
   config: {
-    useSystemColorMode: false,
+    useSystemColorMode: true,
     initialColorMode: "dark",
   },
 });
@@ -18,10 +18,10 @@ const Home: NextPage = () => {
   return (
     <ChakraProvider theme={theme}>
       <Flex m="6" w="100vw" flexDir="column">
-        <Text fontFamily="monospace">Hey, I&rsquo;m Andrei.</Text>
-        <Text fontFamily="monospace">I like to build web3 stuff.</Text>
+        <Text fontFamily="monospace">👋 Hey, I&rsquo;m Andrei.</Text>
+        <Text fontFamily="monospace">🛠️ I like to build web3 stuff.</Text>
         <Text fontFamily="monospace">
-          You can find me{" "}
+          🤝 You can find me{" "}
           <Link href="http://twitter.com/andreivdev" isExternal>
             @andreivdev
           </Link>{" "}
@@ -30,6 +30,21 @@ const Home: NextPage = () => {
             @andreivdev
           </Link>{" "}
           on GitHub.
+        </Text>
+
+        <Text fontFamily="monospace">
+          🫂 Digital colony citizen at{" "}
+          <Link href="https://twitter.com/stakeborgdao" isExternal>
+            @stakeborgdao
+          </Link>
+          {", "}
+          <Link href="https://twitter.com/developer_dao" isExternal>
+            @developer_dao
+          </Link>
+          {" and "}
+          <Link href="https://twitter.com/teamspacemesh" isExternal>
+            @teamspacemesh
+          </Link>
         </Text>
 
         <Text mt="10" fontFamily="monospace">
