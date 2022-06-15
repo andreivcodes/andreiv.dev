@@ -22,12 +22,12 @@ const Home: NextPage = () => {
         <Text fontFamily="monospace">🛠️ I like to build web3 stuff.</Text>
         <Text fontFamily="monospace">
           🤝 You can find me{" "}
-          <Link href="http://twitter.com/andreivdev" isExternal>
-            @andreivdev
+          <Link href="http://twitter.com/andreivtweets" isExternal>
+            @andreivtweets
           </Link>{" "}
           on Twitter or{" "}
-          <Link href="https://github.com/andreivdev" isExternal>
-            @andreivdev
+          <Link href="https://github.com/andreivcodes" isExternal>
+            @andreivcodes
           </Link>{" "}
           on GitHub.
         </Text>
