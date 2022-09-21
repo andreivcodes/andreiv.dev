@@ -12,4 +12,4 @@ RUN hugo -D
 
 EXPOSE 80 1313
 
-CMD [ "hugo", "server", "--disableFastRender", "--buildDrafts", "--watch", "--bind", "0.0.0.0", "--baseURL=http://localhost:1313" ]
+CMD [ "hugo", "server", "--disableFastRender", "--buildDrafts", "--watch", "--bind", "0.0.0.0", "--baseURL=http://andreiv.dev" ]
