@@ -6,7 +6,7 @@ tags: ["web3", "dao"]
 draft: false
 ---
 
-Senate is an infrastructure tool made for governance teams and delegates which aims to help you never forget to vote on a proposal ever again.
+Senate is a web3 infrastructure tool made for governance teams and delegates which aims to help you never forget to vote on a proposal ever again.
 
 It does so by giving you access to a dashboard which includes all the new proposals of the DAOs you follow.
 
@@ -19,3 +19,7 @@ Senate MVP was built during ETHOnline 2022 Hackathon together with @eugenPtr, @D
 It will be (or maybe already is, depending when you are reading this) available at [senatelabs.xyz](https://senatelabs.xyz).
 
 It's source code is available [here](https://github.com/senate-xyz/senate).
+
+---
+
+Built with [Typescript](https://www.typescriptlang.org), [NextJS](https://nextjs.org), [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/), [wagmi](https://wagmi.sh), [ethers.js](https://docs.ethers.io/v5/), [ChakraUI](https://chakra-ui.com), [Docker](https://www.docker.com) and it's all hosted at [Render](https://render.com).
