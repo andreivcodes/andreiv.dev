@@ -18,7 +18,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: andreiv
   description: "andrei's small corner of the internet"
-  keywords: [Blog, Portfolio, PaperMod]
+  keywords: [Blog, Portfolio]
   author: Me
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
@@ -43,18 +43,18 @@ params:
 
   assets:
     # disableHLJS: true # to disable highlight.js
-    # disableFingerprinting: true
-    favicon: "https://emojigraph.org/media/apple/brick_1f9f1.png"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
+    disableFingerprinting: true
+    # favicon: "/images/favicon.ico"
+    # favicon16x16: "/images/favicon-16x16.png"
+    # favicon32x32: "/images/favicon-32x32.png"
+    # apple_touch_icon: "/images/apple-touch-icon.png"
+    # safari_pinned_tab: "/images/apple-touch-icon.png"
     disableHLJS: true
 
   label:
     text: "home"
-    icon: /apple-touch-icon.png
-    iconHeight: 35
+    # icon: /images/apple-touch-icon.png
+    # iconHeight: 35
 
   # profile-mode
   profileMode:
