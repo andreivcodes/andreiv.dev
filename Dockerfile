@@ -4,11 +4,10 @@ RUN apk update
 RUN apk add hugo git
 
 COPY . ./app
-COPY .git ./app
 
 WORKDIR /app
 
-RUN git submodule update --init --recursive
+RUN git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth=1
 RUN hugo -D
 
 EXPOSE 80 1313
