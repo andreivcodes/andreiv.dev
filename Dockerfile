@@ -4,6 +4,7 @@ RUN apk update
 RUN apk add hugo git
 
 COPY . ./app
+COPY .git ./app
 
 WORKDIR /app
 
