@@ -7,6 +7,7 @@ COPY . ./app
 
 WORKDIR /app
 
+RUN git submodule update --init --recursive
 RUN hugo -D
 
 EXPOSE 80 1313
