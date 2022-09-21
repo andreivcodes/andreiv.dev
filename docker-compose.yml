@@ -1,7 +1,0 @@
-version: '2.0'
-services:
-  web:
-    image: "andreivcodes/andreiv.dev:latest"
-    ports:
-    - "1313:1313"
-   
