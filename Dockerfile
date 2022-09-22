@@ -11,5 +11,5 @@ RUN git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --d
 RUN hugo
 
 
-FROM nginx
+FROM krewh/hardened-nginx
 COPY --from=builder /app/public /usr/share/nginx/html
