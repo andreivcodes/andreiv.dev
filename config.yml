@@ -44,16 +44,16 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     disableFingerprinting: true
-    favicon: "/favicon.ico"
-    favicon16x16: "/favicon-16x16.png"
-    favicon32x32: "/favicon-32x32.png"
-    apple_touch_icon: "/apple-touch-icon.png"
-    safari_pinned_tab: "/apple-touch-icon.png"
+    favicon: "/img/favicon.ico"
+    favicon16x16: "/img/favicon-16x16.png"
+    favicon32x32: "/img/favicon-32x32.png"
+    apple_touch_icon: "/img/apple-touch-icon.png"
+    safari_pinned_tab: "/img/favicon-32x32.png"
     disableHLJS: true
 
   label:
     text: "home"
-    # icon: /images/apple-touch-icon.png
+    # icon: "/img/apple-touch-icon.png"
     # iconHeight: 35
 
   # profile-mode
@@ -61,15 +61,15 @@ params:
     enabled: true # needs to be explicitly set
     title: andreiv
     subtitle: "welcome to my small corner of the internet"
-    imageUrl: "/images/pfp.png"
+    imageUrl: "/img/pfp.png"
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
-    buttons:
-      - name: articles
-        url: articles
-      - name: projects
-        url: projects
+    # buttons:
+    #   - name: articles
+    #     url: articles
+    #   - name: projects
+    #     url: projects
 
   socialIcons:
     - name: twitter
@@ -85,7 +85,7 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/andreivcodes/andreiv.dev/content/"
+    URL: "https://github.com/andreivcodes/andreiv.dev/tree/main/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
@@ -103,11 +103,11 @@ menu:
   main:
     - identifier: articles
       name: articles
-      url: /articles/
+      url: /articles
       weight: 10
     - identifier: projects
       name: projects
-      url: /projects/
+      url: /projects
       weight: 20
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
