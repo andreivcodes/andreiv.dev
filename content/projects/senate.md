@@ -22,4 +22,22 @@ It's source code is available [here](https://github.com/senate-xyz/senate).
 
 ---
 
+Later edit:
+
+We won some pretty cool prizes 🥳
+
+```
+WINNER OF
+
+♿️ AAVE Grants DAO — 🥇 Accessibility
+
+🏟 Optimism — Best Community Infrastructure
+
+🔟 Optimism — Top 10
+```
+
+You can check out our submission page [here](https://ethglobal.com/showcase/senate-pxfwm).
+
+---
+
 Built with [Typescript](https://www.typescriptlang.org), [NextJS](https://nextjs.org), [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/), [wagmi](https://wagmi.sh), [ethers.js](https://docs.ethers.io/v5/), [ChakraUI](https://chakra-ui.com), [Docker](https://www.docker.com) and it's all hosted at [Render](https://render.com).
