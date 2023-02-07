@@ -7,11 +7,11 @@ tags: [homelab, proxmox, docker, pfsense]
 
 It looks like a simple [hugo](https://gohugo.io) static website, right? Let's dig a bit deeper.
 
-If you check [its repository](https://github.com/andreivcodes/andreiv.dev), you will notice there's a Dockerfile in there, so this website is built using Docker and running on nginx.
+If you check [its repository](https://github.com/andreivcodes/andreiv.com), you will notice there's a Dockerfile in there, so this website is built using Docker and running on nginx.
 
     ┌──────────────────────────┐
     │                          │
-    │ andreiv.dev source code  │
+    │ andreiv.com source code  │
     │                          │
     └────────────┬─────────────┘
                  │
@@ -32,7 +32,7 @@ Where is this docker image hosted? Well, I'm running docker in a linux container
 
           ┌──────────────────────────┐
           │                          │
-          │ andreiv.dev source code  │
+          │ andreiv.com source code  │
           │                          │
           └────────────┬─────────────┘
                        │
@@ -68,7 +68,7 @@ Github Actions!
 
            ┌──────────────────────────┐
            │                          │
-           │ andreiv.dev source code  │
+           │ andreiv.com source code  │
            │                          │
            └────────────┬─────────────┘
                         │
@@ -125,7 +125,7 @@ Behind a reverse proxy and a firewall, inside it's own separate network, of cour
 
            ┌──────────────────────────┐
            │                          │
-           │ andreiv.dev source code  │
+           │ andreiv.com source code  │
            │                          │
            └────────────┬─────────────┘
                         │
@@ -191,7 +191,7 @@ This is getting complicated, let's zoom in a bit
     │ . │            │                                     │              │ . │
     │ . │            │    ┌────────────────────────────┐   │              │ . │
     │ . │            │    │                            │   │              │ . │
-    │ . │            │    │        andreiv.dev         │   │              │ . │
+    │ . │            │    │        andreiv.com         │   │              │ . │
     │ . │            │    └────────────────────────────┘   │              │ . │
     │ . │            │                                     │              │ . │
     │ . │            │               nginx                 │              │ . │
