@@ -1,5 +1,5 @@
 ---
-title: "How to initialize Spacemesh data using cloud GPUs"
+title: "Initialize Spacemesh PoST data using cloud GPUs"
 date: 2023-09-15T00:00:00+03:00
 draft: true
 ---
@@ -36,7 +36,7 @@ Enter [runpod](runpod.io).
 
 Runpod is a platform for renting GPU power or offering your own GPU to be used by someone else. If you're not into that whole community thing, they also have their own GPUs and their pricing is pretty good.
 
-![Runpod Pricing](runpod-pricing.png)
+![Runpod Pricing](./runpod-pricing.png)
 
 After some _very primitive_ tests, I noticed that RTX 4090 can generate around 20GB of PoST data per hour.
 
