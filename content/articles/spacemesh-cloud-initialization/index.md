@@ -24,13 +24,17 @@ However, there's a problem. I don't own a GPU. I only have a MacBook M2, and it'
 
 # Cloud GPU ?
 
-_<span style="color:indianred">Before proceeding further, please be aware of the following risks:</span>_
+⚠️ ⚠️ ⚠️
 
-- _<span style="color:indianred">You will enter your passphrase in a cloud instance, essentially someone else's computer. This is vulnerable to MITM attacks!</span>_
-- _<span style="color:indianred">We will use [this](https://github.com/selkies-project/docker-nvidia-glx-desktop) Docker image for our environment, which makes it vulnerable to supply chain attacks!</span>_
-- _<span style="color:indianred">In essence, you're trusting Runpod to run a virtual machine for you, configured by a GitHub user, with instructions provided by me, and trust that they won't spy on your activities inside that virtual machine and also trust they will delete all the data after you're done.</span>_
+_Before proceeding further, please be aware of the following risks:_
 
-_<span style="color:indianred">Understood the risks? Great, let's continue.</span>_
+- _You will enter your passphrase in a cloud instance, essentially someone else's computer. This is vulnerable to MITM attacks!_
+- _We will use [this](https://github.com/selkies-project/docker-nvidia-glx-desktop) Docker image for our environment, which makes it vulnerable to supply chain attacks!_
+- _In essence, you're trusting Runpod to run a virtual machine for you, configured by a GitHub user, with instructions provided by me, and trust that they won't spy on your activities inside that virtual machine and also trust they will delete all the data after you're done._
+
+_Understood the risks? Great, let's continue._
+
+⚠️ ⚠️ ⚠️
 
 Enter [runpod](runpod.io).
 
