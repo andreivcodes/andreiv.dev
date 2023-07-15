@@ -46,7 +46,7 @@ Remember, this is a very rough estimate. I recommend you to test it out for your
 
 # The actual guide
 
-- Register for an account on runpod.io.
+- Register for an account on runpod.io. Duh.
 - Runpod operates on prepaid credits, so you'll need to add some funds [here](https://www.runpod.io/console/user/billing).
 
   ![Runpod Balance](images/runpod-balance.png)
@@ -138,4 +138,3 @@ Data generation will take a long time. It would be a shame if we did something w
 ![File Explorer](images/fileexplorer.png)
 
 - Let it do it's job. It will probably take a couple of days.
--
