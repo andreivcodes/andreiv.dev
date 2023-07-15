@@ -86,7 +86,7 @@ Remember, this is a very rough estimate. I recommend you to test it out for your
 
       **NOVNC_ENABLE - true**
 
-      **NVIDIA_DRIVER_CAPABILITIES - true**
+      **NVIDIA_DRIVER_CAPABILITIES - all**
 
 Your setup should look something like this once you're finished:
 
