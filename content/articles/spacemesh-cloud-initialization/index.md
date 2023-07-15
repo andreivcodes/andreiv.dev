@@ -28,7 +28,7 @@ _<span style="color:indianred">Before proceeding further, please be aware of the
 
 - _<span style="color:indianred">You will enter your passphrase in a cloud instance, essentially someone else's computer. This is vulnerable to MITM attacks!</span>_
 - _<span style="color:indianred">We will use [this](https://github.com/selkies-project/docker-nvidia-glx-desktop) Docker image for our environment, which makes it vulnerable to supply chain attacks!</span>_
-- _<span style="color:indianred">In essence, you're trusting Runpod to run a virtual machine for you, configured by a GitHub user, with instructions provided by me, and trust that they won't spy on your activities inside that virtual machine and then delete all the data after you're done.</span>_
+- _<span style="color:indianred">In essence, you're trusting Runpod to run a virtual machine for you, configured by a GitHub user, with instructions provided by me, and trust that they won't spy on your activities inside that virtual machine and also trust they will delete all the data after you're done.</span>_
 
 _<span style="color:indianred">Understood the risks? Great, let's continue.</span>_
 
