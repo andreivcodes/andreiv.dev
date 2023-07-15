@@ -137,4 +137,4 @@ Data generation will take a long time. It would be a shame if we did something w
 
 ![File Explorer](images/fileexplorer.png)
 
-- Let it do it's job. It will probably take a couple of days.
+- Let it do its job. It will probably take a couple of days.
