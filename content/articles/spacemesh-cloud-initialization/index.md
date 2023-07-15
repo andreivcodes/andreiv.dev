@@ -110,7 +110,7 @@ Your setup should look something like this once you're finished:
 
 - _noVNC_ will open up in a new tab. Go ahead and enter the password you set for the template.
 
-- Go ahead and [download Smapp](https://spacemesh.io/start/) for Linux using Firefox.
+- You can [download Smapp](https://spacemesh.io/start/) for Linux using Firefox.
 
 - Once it's downloaded, open the KDE menu (the thing which looks like the windows Start menu, with an icon like > ) and open _Konsole_.
 
@@ -128,14 +128,14 @@ Don't actually write "[tab]". Press tab instead. That'll autocomplete the file n
 
 This should open Smapp.
 
-- Go ahead and restore or set up a new account. **Don't forget to write down the passphrase!!!**
+- Restore or set up a new account. **Don't forget to write down the passphrase!!!**
 
-- Set up PoST generation
+- Set up PoST generation. I won't go into details about this. Spacemesh has a guide [here](https://spacemesh.io/start/#spacemesh-app)
   - the default folder - /home/user/post
   - 16 files of 64GB, resulting in 1TB PoST data
   - Nvidia GPU
 
-Data generation will take a long time. It would be a shame if we did something wrong and it's not generating it in the right place, right?
+Data generation will take a long time. It would be a shame if something went wrong and it's not generating it in the right place, right?
 
 - Come back after about 30 minutes, open the file explorer and go to _/Home/post_. You should see something similar to this
 
