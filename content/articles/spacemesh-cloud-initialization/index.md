@@ -93,3 +93,49 @@ Your setup should look something like this once you're finished:
 - Go to _Secure Cloud_ and _Deploy_ a _RTX 4090_ instance. **Ensure you use the template you created earlier; in my case, _sm-nvidia-glx-desktop_.**
 
 ![Runpod Deploy](images/runpod-deploy.png)
+
+- Start it up but don't touch it yet! Wait for a few minutes for the docker image to install all the drivers it needs, go grab a coffee or something. Come back in 10 minutes.
+
+- Under _My Pods_, expand your running pod and _Connect_.
+
+![Runpod Connect](images/runpod-connect.png)
+
+- Choose the _HTTP Service_ option
+
+![Runpod Connect](images/runpod-connect-http.png)
+
+- _noVNC_ will open up in a new tab. Go ahead and enter the password you set for the template.
+
+- Go ahead and [download Smapp](https://spacemesh.io/start/) for Linux using Firefox.
+
+- Once it's downloaded, open the KDE menu (the thing which looks like the windows Start menu, with an icon like > ) and open _Konsole_.
+
+- Run the following commands.
+
+```
+cd Downloads
+
+sudo chmod +x Sp[tab]
+                  ^
+Don't actually write "[tab]". Press tab instead. That'll autocomplete the file name.
+
+./ Sp[tab] --no-sandbox
+```
+
+This should open Smapp.
+
+- Go ahead and restore or set up a new account. **Don't forget to write down the passphrase!!!**
+
+- Set up PoST generation
+  - the default folder - /home/user/post
+  - 16 files of 64GB, resulting in 1TB PoST data
+  - Nvidia GPU
+
+Data generation will take a long time. It would be a shame if we did something wrong and it's not generating it in the right place, right?
+
+- Come back after about 30 minutes, open the file explorer and go to _/Home/post_. You should see something similar to this
+
+![File Explorer](images/fileexplorer.png)
+
+- Let it do it's job. It will probably take a couple of days.
+-
