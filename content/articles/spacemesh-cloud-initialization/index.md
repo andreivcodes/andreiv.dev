@@ -36,7 +36,7 @@ Enter [runpod](runpod.io).
 
 Runpod is a platform for renting GPU power or offering your own GPU to be used by someone else. If you're not into that whole community thing, they also have their own GPUs and their pricing is pretty good.
 
-![Runpod Pricing](./runpod-pricing.png)
+![Runpod Pricing](images/runpod-pricing.png)
 
 After some _very primitive_ tests, I noticed that RTX 4090 can generate around 20GB of PoST data per hour.
 
