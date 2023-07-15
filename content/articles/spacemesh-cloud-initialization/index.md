@@ -70,9 +70,9 @@ Remember, this is a very rough estimate. I recommend you to test it out for your
 
       _This will be used for our remote connection inside the VM._
 
-    - Expose TCP Ports: **20,**
+    - Expose TCP Ports: **22,**
 
-      _Just in case you need to ssh into it._
+      _Just in case you need to ssh into it. Not mandatory._
 
     - Environment Variables
 
@@ -90,6 +90,6 @@ Your setup should look something like this once you're finished:
 
 - Save the template. Duh.
 
-- Go to _Secure Cloud_ and _Deploy_ a _RTX 4090_ instance. **Ensure you use the template you created earlier; in my case, _sm-nvidia-glx-desktop_**
+- Go to _Secure Cloud_ and _Deploy_ a _RTX 4090_ instance. **Ensure you use the template you created earlier; in my case, _sm-nvidia-glx-desktop_.**
 
 ![Runpod Deploy](images/runpod-deploy.png)
