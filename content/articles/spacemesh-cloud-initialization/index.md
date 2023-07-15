@@ -12,7 +12,7 @@ The memorable date was July 14th, a day that marked a significant milestone in t
 
 Their commitment to their vision is nothing short of impressive. With the mainnet now operational, the future indeed looks promising for Spacemesh!
 
-# Now what?
+# Now what ?
 
 Now that the genesis event is over, we have approximately 10 days to set up our PoST data before the first round begins, as explained in the [genesis timeline](https://spacemesh.io/blog/genesis-timeline/).
 
