@@ -121,7 +121,8 @@ cd Downloads
 
 sudo chmod +x Sp[tab]
                   ^
-Don't actually write "[tab]". Press tab instead. That'll autocomplete the file name.
+Don't actually write "[tab]". Press tab instead.
+That'll autocomplete the file name.
 
 ./ Sp[tab] --no-sandbox
 ```
