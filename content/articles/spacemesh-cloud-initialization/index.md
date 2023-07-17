@@ -62,7 +62,7 @@ Remember, this is a very rough estimate. I recommend you to test it out for your
     - Template name: whatever name you prefer
     - Container image: **ghcr.io/selkies-project/nvidia-glx-desktop:latest**
     - Container Disk: **5 GB**
-    - Volume Disk: **1050GB**
+    - Volume Disk: **1200 GB**
 
       _This is the size of the volume which will be used for PoST data generation. In this case, we will generate 1TB of data, so this is slightly bigger than that._
 
