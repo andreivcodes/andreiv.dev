@@ -142,3 +142,60 @@ Data generation will take a long time. It would be a shame if something went wro
 ![File Explorer](images/fileexplorer.png)
 
 - Let it do its job. It will probably take a couple of days.
+
+_wikka wikka dj cue scratch_ - Ok, we're 2 days later. Our data initialization is done.
+
+![Init done](images/init-done.png)
+
+- We now have a bunch of files in _/home/user/post_. And we just ran into another problem. These files are not on our PC, they are still on the GPU server. We need to get them out of there.
+
+I tried transferring them directly. It didn't go well. Apparently those servers limit the bandwidth to pretty much any IP, _except some storage providers_.
+
+This means we have to move the data to a storage provider first, and then download it from there.
+
+I tried using AWS S3 for a 256GB transfer. It ended up costing around 20$, which I believe is too expensive, so for this guide we will use [BackBlaze](https://www.backblaze.com) instead.
+
+![Backblaze](images/backblaze.png)
+
+- So... create an account on Backblaze. Duh.
+
+- Nothing in the world is free, so make sure to enter your billing info.
+
+![Backblaze billing](images/backblaze-billing.png)
+
+- In order to connect our server to backblaze we will need to generate an API key for it. You can do that inside the main dashboard.
+
+![Backblaze api](images/backblaze-api.png)
+
+- Backbalze will give you some keys to access your storage. Copy these in a text file or something, you will need them later.
+
+![Backblaze api](images/backblaze-api-key.png)
+
+- Besides a way to access Backblaze, we need an actual _place_ inside Backblaze to storage the data. This is called a bucket. It works sort of like a folder. Go ahead and create one.
+
+![Backblaze bucket](images/backblaze-bucket.png)
+
+- Cool, Backblaze is done. We can start moving our data. Go back to your runpod instance and click _Cloud sync_. A few options will show up. Select _Backblaze_ and click on _Copy **to** Backblaze_
+
+![Backblaze copy](images/backblaze-copy.png)
+
+- You now need to enter the information you got from Backblaze.
+
+  - Account ID or Application Key ID - enter keyID from Backblaze here
+  - Application Key - enter applicationKey from Backblaze here
+  - Bucket Path - enter the bucket name here
+  - Copy from Pod - this should default to `/home/user/post`. If that's the case, leave it as is.
+
+- Runpod might complain there was an error. Actually, there's no error. Wait for a minute, click on Cloud Sync again and you should be able to see progress by clicking on _Debug_
+
+![Backblaze progress](images/backblaze-progress.png)
+
+- It should be quite fast. I moved 1TB in around 15 minutes.
+
+- Once the transfer is done, select all your files in the File Browser and click Download. It won't actually start the download, but instead it will ask you to create a snapshot of the data first. You will be able to download this snapshot later.
+
+![Backblaze snapshot](images/backblaze-snapshot.png)
+
+- When the snapshot is ready, download it, set up your local node and start smeshing!
+
+_Make sure you don't forget to stop and delete the runpod instance and delete all the data from Backblaze, otherwise you will keep paying for it._
