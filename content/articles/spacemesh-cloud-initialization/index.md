@@ -1,7 +1,7 @@
 ---
 title: "Initialize Spacemesh PoST data using cloud GPUs"
 date: 2023-07-15T00:00:00+03:00
-draft: true
+draft: false
 ---
 
 # Celebrating a milestone
