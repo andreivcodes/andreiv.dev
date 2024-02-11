@@ -1,6 +1,7 @@
+const { withContentlayer } = require("next-contentlayer");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   async redirects() {
     return [
       {
@@ -10,6 +11,6 @@ const nextConfig = {
       },
     ]
   },
-}
+};
 
-export default nextConfig
+module.exports = withContentlayer(nextConfig);
