@@ -1,6 +1,6 @@
 import { HomeIcon } from "@radix-ui/react-icons"
-import { ThemeToggle } from "./theme-toggle"
 import Link from "next/link"
+import { ThemeToggle } from "./theme-toggle"
 import { Separator } from "./ui/separator"
 
 export const Header = () => {
