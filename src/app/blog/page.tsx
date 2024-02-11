@@ -18,7 +18,6 @@ const BlogCard = ({ title, date, short, slug, wordCount }: { title: string, date
   return (
 
     <Card>
-
       <CardContent>
         <CardHeader>
           <CardTitle>
@@ -30,7 +29,6 @@ const BlogCard = ({ title, date, short, slug, wordCount }: { title: string, date
           <div className="text-xs font-thin font-mono text-stone-400">{format(parseISO(date), 'LLLL d, yyyy')} - {wordCount} words</div>
         </CardFooter>
       </CardContent>
-
     </Card>
   )
 }
