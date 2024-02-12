@@ -11,7 +11,7 @@ export default async function Home() {
   try {
     let scraper = new Scraper();
     try {
-      await scraper.login(process.env.TWITTER_ACCOUNT, process.env.TWITTER_PASSWORD, process.env.TWITTER_PASSWORD);
+      // await scraper.login(process.env.TWITTER_ACCOUNT, process.env.TWITTER_PASSWORD, process.env.TWITTER_PASSWORD);
     } catch (loginError) {
       console.error("Login failed:", loginError);
     }
