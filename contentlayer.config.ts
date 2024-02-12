@@ -1,7 +1,4 @@
-import {
-  defineDocumentType,
-  makeSource,
-} from "contentlayer/source-files";
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
 export const BlogPost = defineDocumentType(() => ({
   name: "BlogPost",
@@ -27,11 +24,11 @@ export const BlogPost = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: "string",
-      resolve: doc => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
     },
     wordCount: {
       type: "number",
-      resolve: doc => doc.body.raw.split(" ").length,
+      resolve: (doc) => doc.body.raw.split(" ").length,
     },
   },
 }));
@@ -46,6 +43,11 @@ export const Project = defineDocumentType(() => ({
       description: "The name of the project",
       required: true,
     },
+    short: {
+      type: "string",
+      description: "Short description",
+      required: true,
+    },
     date: {
       type: "string",
       description: "The date of the blog post",
@@ -55,7 +57,7 @@ export const Project = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: "string",
-      resolve: doc => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
     },
   },
 }));
