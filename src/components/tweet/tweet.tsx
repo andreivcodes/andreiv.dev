@@ -1,17 +1,17 @@
 import { Suspense } from "react";
 import { type TweetCoreProps, enrichTweet } from "react-tweet";
 import { getTweet } from "react-tweet/api";
-import { DubTweet } from "./dub-tweet";
+import { MyTweet } from "./my-tweet";
 
 export const TweetContent = async ({ id, onError }: TweetCoreProps) => {
   const tweet = id
     ? await getTweet(id).catch((err) => {
-        if (onError) {
-          onError(err);
-        } else {
-          console.error(err);
-        }
-      })
+      if (onError) {
+        onError(err);
+      } else {
+        console.error(err);
+      }
+    })
     : undefined;
 
   if (!tweet) {
@@ -22,7 +22,7 @@ export const TweetContent = async ({ id, onError }: TweetCoreProps) => {
     );
   }
 
-  return <DubTweet tweet={enrichTweet(tweet)} />;
+  return <MyTweet tweet={enrichTweet(tweet)} />;
 };
 
 export const Tweet = (props: TweetCoreProps) => (

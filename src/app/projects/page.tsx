@@ -5,8 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { allProjects } from "contentlayer/generated";
+import { Project, allProjects } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
+import { LinkIcon } from "lucide-react";
 import Link from "next/link";
 
 export default async function Blog() {
@@ -17,10 +18,7 @@ export default async function Blog() {
         .map((project) => (
           <ProjectCard
             key={project.name}
-            name={project.name}
-            short={project.short}
-            date={project.date}
-            slug={project.slug}
+            project={project}
           />
         ))}
     </div>
@@ -28,28 +26,25 @@ export default async function Blog() {
 }
 
 const ProjectCard = ({
-  name,
-  short,
-  date,
-  slug,
+  project,
 }: {
-  name: string;
-  short: string;
-  date: string;
-  slug: string;
+  project: Project;
 }) => {
   return (
     <Card>
       <CardHeader>
         <CardTitle>
-          <Link href={`/projects/${slug}`}>{name}</Link>
+          <Link href={`/projects/${project.slug}`}>{project.name}</Link>
         </CardTitle>
-        <CardDescription>{short}</CardDescription>
+        <CardDescription>{project.shortDescription}</CardDescription>
       </CardHeader>
 
-      <CardFooter className="w-full justify-end">
+      <CardFooter className="w-full justify-between">
+        <Link href={project.url} target="_blank" className="flex flex-row gap-2 items-center fill-stone-400 text-stone-400">
+          <LinkIcon className="w-4 h-4" />{project.url}
+        </Link>
         <div className="text-xs font-thin font-mono text-stone-400">
-          {format(parseISO(date), "LLLL d, yyyy")}
+          {format(parseISO(project.date), "LLLL d, yyyy")}
         </div>
       </CardFooter>
     </Card>

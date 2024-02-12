@@ -20,11 +20,11 @@ export const Header = () => {
 
 
     <div className="h-8 flex flex-row items-center justify-center gap-4 md:gap-8">
+      <Link href="/about" className="hover:border-b-2 transition-all duration-300">about</Link>
+      <Separator orientation="vertical" />
       <Link href="/blog" className="hover:border-b-2 transition-all duration-300">blog</Link>
       <Separator orientation="vertical" />
       <Link href="/projects" className="hover:border-b-2 transition-all duration-300">projects</Link>
-      <Separator orientation="vertical" />
-      <Link href="/about" className="hover:border-b-2 transition-all duration-300">about</Link>
     </div>
 
     <div className="w-1/4 hidden md:flex flex-row justify-end">

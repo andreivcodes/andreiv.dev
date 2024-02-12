@@ -1,19 +1,19 @@
 import { type ReactNode } from "react";
 import { type EnrichedTweet } from "react-tweet";
-
-const Link = ({ href, children }: { href: string; children: ReactNode }) => (
-  <a
+import Link from "next/link"
+const Url = ({ href, children }: { href: string; children: ReactNode }) => (
+  <Link
     className="text-[rgb(29,161,242)] font-normal no-underline"
     href={href}
     target="_blank"
     rel="noopener noreferrer"
   >
     {children}
-  </a>
+  </Link>
 );
 
 export const TweetText = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="truncate whitespace-pre-wrap text-[15px]">
+  <div className="truncate whitespace-pre-wrap text-sm">
     {tweet.entities.map((item, i) => {
       switch (item.type) {
         case "hashtag":
@@ -21,9 +21,9 @@ export const TweetText = ({ tweet }: { tweet: EnrichedTweet }) => (
         case "url":
         case "symbol":
           return (
-            <Link key={i} href={item.href}>
+            <Url key={i} href={item.href}>
               {item.text}
-            </Link>
+            </Url>
           );
         case "media":
           return;

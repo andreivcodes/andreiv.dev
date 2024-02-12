@@ -1,12 +1,14 @@
 import { type EnrichedTweet } from "react-tweet";
 import { nFormatter } from "./utils";
-import { Heart, Message } from "./icons";
 import { TweetHeader } from "./tweet-header";
 import { TweetText } from "./tweet-text";
 import { TweetMedia } from "./tweet-media";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import Link from "next/link";
+import { Message } from "./icons/message";
+import { Heart } from "./icons/heart";
 
-export const DubTweet = ({ tweet }: { tweet: EnrichedTweet }) => {
+export const MyTweet = ({ tweet }: { tweet: EnrichedTweet }) => {
   const TweetBody = (
     <div className="max-w-2xl px-4">
       <Card>
@@ -18,19 +20,21 @@ export const DubTweet = ({ tweet }: { tweet: EnrichedTweet }) => {
               tweet.in_reply_to_screen_name && (
                 <div className="mt-5 text-base text-gray-500">
                   Replying to{" "}
-                  <a
+                  <Link
                     className="text-[#1da1f2] no-underline"
                     href={tweet.in_reply_to_url}
                     target="_blank"
                   >
                     @{tweet.in_reply_to_screen_name}
-                  </a>
+                  </Link>
                 </div>
               )}
           </div>
         </CardHeader>
         <CardContent className="py-4">
-          <TweetText tweet={tweet} />
+          <Link href={tweet.url} target="_blank">
+            <TweetText tweet={tweet} />
+          </Link>
           {/* Images, Preview images, videos, polls, etc. */}
           <div className="-mb-2 mt-3">
             {tweet.mediaDetails?.length ? (
@@ -42,13 +46,13 @@ export const DubTweet = ({ tweet }: { tweet: EnrichedTweet }) => {
                 }
               >
                 {tweet.mediaDetails?.map((media) => (
-                  <a
+                  <Link
                     key={media.media_url_https}
                     href={tweet.url}
                     target="_blank"
                   >
                     <TweetMedia tweet={tweet} media={media} />
-                  </a>
+                  </Link>
                 ))}
               </div>
             ) : null}
@@ -56,24 +60,24 @@ export const DubTweet = ({ tweet }: { tweet: EnrichedTweet }) => {
         </CardContent>
         <CardFooter className="py-4">
           <div className="flex justify-center space-x-8 text-sm">
-            <a
-              className="group flex items-center space-x-3 hover:text-red-800"
+            <Link
+              className="group flex items-center space-x-3"
               href={tweet.like_url}
               target="_blank"
               rel="noreferrer"
             >
-              <Heart className="h-4 w-4 group-hover:fill-red-800" />
+              <Heart className="h-4 w-4 group-hover:fill-red-900" />
               <p>{nFormatter(tweet.favorite_count)}</p>
-            </a>
-            <a
-              className="group flex items-center space-x-3 hover:text-blue-800"
+            </Link>
+            <Link
+              className="group flex items-center space-x-3"
               href={tweet.reply_url}
               target="_blank"
               rel="noreferrer"
             >
-              <Message className="h-4 w-4 group-hover:fill-blue-800" />
+              <Message className="h-4 w-4 group-hover:fill-card-foreground" />
               <p>{nFormatter(tweet.conversation_count)}</p>
-            </a>
+            </Link>
           </div>
         </CardFooter>
       </Card>
