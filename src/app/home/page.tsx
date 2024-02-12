@@ -8,17 +8,31 @@ import {
 export const revalidate = 3600
 
 export default async function Home() {
-  let scraper = new Scraper();
-  try { await scraper.login(process.env.TWITTER_ACCOUNT, process.env.TWITTER_PASSWORD, process.env.TWITTER_PASSWORD); } catch { }
-  let tweet = await scraper.getLatestTweet("andreivtweets");
+  try {
+    let scraper = new Scraper();
+    try {
+      await scraper.login(process.env.TWITTER_ACCOUNT, process.env.TWITTER_PASSWORD, process.env.TWITTER_PASSWORD);
+    } catch (loginError) {
+      console.error("Login failed:", loginError);
+    }
 
-  return (
-    <main className="flex w-full h-full flex-col items-center justify-evenly py-8 gap-4">
-      <div className="flex flex-col gap-2">
-        <AboutShort />
+    let tweet;
+    try {
+      tweet = await scraper.getLatestTweet("andreivtweets");
+    } catch (tweetError) {
+      console.error("Error fetching latest tweet:", tweetError);
+    }
 
-      </div>
-      <Tweet id={(tweet as ScrapedTweet).id} />
-    </main>
-  );
+    return (
+      <main className="flex w-full h-full flex-col items-center justify-evenly py-8 gap-4">
+        <div className="flex flex-col gap-2">
+          <AboutShort />
+        </div>
+        {tweet != undefined && <Tweet id={(tweet as ScrapedTweet).id} />}
+      </main>
+    );
+  } catch (error) {
+    console.error("An unexpected error occurred:", error);
+    return <div>An unexpected error occurred. Please try again later.</div>;
+  }
 }
