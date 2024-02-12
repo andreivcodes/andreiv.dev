@@ -58,8 +58,8 @@ export const AboutShort = () => {
           Sibiu, Romania, GMT+2
         </div>
       </div>
-      <div className="flex flex-col">
-        <TypewriterEffect key={currentTaglineIndex} words={taglines[currentTaglineIndex]} className="font-mono font-light text-sm" />
+      <div className="flex flex-col max-w-[60%]">
+        <TypewriterEffect key={currentTaglineIndex} words={taglines[currentTaglineIndex]} className="font-mono font-light text-sm text-left overflow-auto" />
         <Separator />
       </div>
     </div>

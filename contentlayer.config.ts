@@ -40,6 +40,14 @@ export const Project = defineDocumentType(() => ({
   filePathPattern: "projects/**/*.mdx",
   contentType: "mdx",
   fields: {
+    aboutIndex: {
+      type: "number",
+      required: true,
+    },
+    aboutTopPadding: {
+      type: "number",
+      required: false
+    },
     name: {
       type: "string",
       description: "The name of the project",
@@ -95,6 +103,14 @@ export const Experience = defineDocumentType(() => ({
   filePathPattern: "experience/**/*.mdx",
   contentType: "mdx",
   fields: {
+    aboutTopPadding: {
+      type: "number",
+      required: false
+    },
+    aboutIndex: {
+      type: "number",
+      required: true,
+    },
     companyName: {
       type: "string",
       description: "The name of the company",
