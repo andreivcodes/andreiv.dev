@@ -9,7 +9,7 @@ export const revalidate = 3600
 
 export default async function Home() {
   let scraper = new Scraper();
-  try { await scraper.login(process.env.TWITTER_ACCOUNT, process.env.TWITTER_PASSWORD, process.env.TWITTER_PASSWORD); }
+  try { await scraper.login(process.env.TWITTER_ACCOUNT, process.env.TWITTER_PASSWORD, process.env.TWITTER_PASSWORD); } catch { }
   let tweet = await scraper.getLatestTweet("andreivtweets");
 
   return (
