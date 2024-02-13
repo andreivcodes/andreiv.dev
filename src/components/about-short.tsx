@@ -7,6 +7,12 @@ import { Separator } from "./ui/separator";
 
 const taglines = [
   [
+    { text: "selectively", },
+    { text: "dumb,", },
+    { text: "overall", },
+    { text: "smart", },
+  ],
+  [
     { text: "in", },
     { text: "a", },
     { text: "world", },
@@ -27,12 +33,6 @@ const taglines = [
     { text: "Christmas", },
     { text: "Eve", },
   ],
-  [
-    { text: "selectively", },
-    { text: "dumb,", },
-    { text: "overall", },
-    { text: "smart", },
-  ]
 ];
 
 export const AboutShort = () => {
