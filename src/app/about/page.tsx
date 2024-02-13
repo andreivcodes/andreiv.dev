@@ -1,34 +1,50 @@
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { type Experience, type Project, allProjects, allExperiences } from "contentlayer/generated";
-import { GlobeIcon, LinkIcon } from "lucide-react";
+import { GlobeIcon } from "lucide-react";
+import { getMDXComponent } from "next-contentlayer/hooks";
 import Link from "next/link"
 
 export default async function Home() {
   return (
     <main className="flex w-full max-w-7xl h-full flex-col p-2 md:p-8 gap-4 md:gap-8">
-      <AboutLong />
-
+      <div className="flex flex-col md:flex-row">
+        <AboutLong />
+        <Skills />
+      </div>
       <div className="grid grid-cols-2 gap-2 md:gap-8">
         <div className="flex flex-col gap-8">
-          <h2 className="text-2xl font-bold mb-4 text-center md:text-left">Projects</h2>
-          {allProjects.sort((a, b) => a.aboutIndex - b.aboutIndex).map((project) => (
-            <ProjectCard key={project._id} project={project} />
-          ))}
+          <div className="text-2xl font-bold mb-4 text-center md:text-left">Projects</div>
+          <div>
+            {allProjects.sort((a, b) => a.index - b.index).map((project) => (
+              <ProjectCard key={project._id} project={project} />
+            ))}
+          </div>
         </div>
         <div className="relative">
           <div className="absolute inset-y-0 bg-stone-300 w-px"></div>
           <div className="flex flex-col gap-8 pl-2 md:pl-8">
-            <h2 className="text-2xl font-bold mb-4 text-center md:text-right">Experience</h2>
-            {allExperiences.sort((a, b) => a.index - b.index).map((experience) => (
-              <ExperienceCard key={experience._id} experience={experience} />
-            ))}
+            <div className="text-2xl font-bold mb-4 text-center md:text-right">Experience</div>
+            <div>
+              {allExperiences.sort((a, b) => a.index - b.index).map((experience) => (
+                <ExperienceCard key={experience._id} experience={experience} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </main>
   );
+}
+
+const primarySkills = ["javascript", "typescript", "rust", "c", "react", "nextjs", "sql", "web3", "docker", "aws", "serverless"];
+const secondarySkills = ["htmx", "flutter", "react native", "system design", "autosar", "embedded software"];
+const Skills = () => {
+  return <div className="w-full m-auto max-w-sm flex flex-row flex-wrap gap-2 h-fit items-center justify-center">
+    {primarySkills.map((skill) => <div key={skill}><Badge>{skill}</Badge></div>)}
+    {secondarySkills.map((skill) => <div key={skill}><Badge variant="secondary">{skill}</Badge></div>)}
+  </div>
 }
 
 const AboutLong = () => {
@@ -62,8 +78,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
           <CardTitle>
             <Link href={`/projects/${project.slug}`}>{project.name}</Link>
           </CardTitle>
-          <CardDescription>{project.shortDescription}</CardDescription>
         </CardHeader>
+
+        <CardContent className="text-sm">{project.shortDescription}</CardContent>
 
         <CardFooter className="w-full flex flex-col md:flex-row justify-between p-2 md:p-6">
           <div className="flex flex-wrap gap-2">
@@ -74,9 +91,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
               <Badge className="pointer-events-none" variant="secondary" key={stack}>{stack}</Badge>
             )}
           </div>
-          <Link href={project.url} target="_blank" className="hidden md:flex flex-row gap-2 items-center fill-stone-400 text-stone-400">
-            <LinkIcon className="w-4 h-4" />{project.url}
-          </Link>
         </CardFooter>
       </Card>
     </div>
@@ -84,6 +98,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
 };
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
+  const Content = getMDXComponent(experience.body.code);
+
   return (
     <div className={`w-full flex flex-col items-start gap-2 pt-${experience.aboutTopPadding ?? 0}`}>
       <div className="text-sm">
@@ -94,21 +110,24 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         <CardHeader className="w-full p-2 md:p-6">
           <CardTitle className="w-full flex flex-col gap-2">
 
-            <div className="flex flex-wrap gap-2 text-end align-bottom justify-between">
-              <div className="w-full font-semibold">{experience.companyName}</div>
-              <div className="w-full text-xs font-mono font-extralight">{experience.companyAbout}</div>
+            <div className="w-full flex flex-row justify-between gap-2 align-bottom">
+              <div className="font-semibold">{experience.companyName}</div>
+              <div className="hidden md:block text-xs font-mono font-extralight">{experience.companyAbout}</div>
             </div>
             <div className="flex flex-col md:flex-row justify-between md:items-end gap-2">
               <div className="text-start text-lg">
                 {experience.role}
               </div>
-              <div className="justify-between font-light text-xs opacity-50">
+              <div className="justify-between font-light text-sm opacity-50">
                 {experience.startDate} to {experience.endDate ? experience.endDate : "now"}
               </div>
             </div>
           </CardTitle>
-          <CardDescription>{experience.shortDescription}</CardDescription>
         </CardHeader>
+        <CardContent className="text-sm">
+          <Content />
+        </CardContent>
+
       </Card>
     </div >
   );

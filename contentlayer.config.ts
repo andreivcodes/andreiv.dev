@@ -126,11 +126,6 @@ export const Experience = defineDocumentType(() => ({
       description: "The name of the role",
       required: true,
     },
-    shortDescription: {
-      type: "string",
-      description: "A short description of the work I did",
-      required: true,
-    },
     startDate: {
       type: "string",
       description: "The start date",
@@ -154,6 +149,6 @@ export default makeSource({
   contentDirPath: "data",
   documentTypes: [Project, BlogPost, Experience],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkBreaks],
+    remarkPlugins: [remarkGfm],
   }
 });
