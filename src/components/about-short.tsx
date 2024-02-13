@@ -43,7 +43,7 @@ export const AboutShort = () => {
       setCurrentTaglineIndex((prevIndex) =>
         prevIndex === taglines.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, [currentTaglineIndex]);
