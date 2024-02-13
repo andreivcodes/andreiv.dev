@@ -49,7 +49,7 @@ export const AboutShort = () => {
   }, [currentTaglineIndex]);
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
         <div className="font-mono font-bold text-3xl">Andrei Voinea</div>
         <div className="font-mono">Full Stack Engineer</div>
@@ -58,9 +58,8 @@ export const AboutShort = () => {
           Sibiu, Romania, GMT+2
         </div>
       </div>
-      <div className="flex flex-col max-w-[60%]">
+      <div className="absolute flex flex-col pt-28 max-w-64">
         <TypewriterEffect key={currentTaglineIndex} words={taglines[currentTaglineIndex]} className="font-mono font-light text-sm text-left overflow-auto" />
-        <Separator />
       </div>
     </div>
   );

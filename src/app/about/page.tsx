@@ -23,7 +23,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="relative">
-          <div className="absolute inset-y-0 bg-stone-300 w-px"></div>
+          <div className="absolute inset-y-0 bg-current w-px"></div>
           <div className="flex flex-col gap-8 pl-2 md:pl-8">
             <div className="text-2xl font-bold mb-4 text-center md:text-right">Experience</div>
             <div>
@@ -42,8 +42,8 @@ const primarySkills = ["javascript", "typescript", "rust", "c", "react", "nextjs
 const secondarySkills = ["htmx", "flutter", "react native", "system design", "autosar", "embedded software"];
 const Skills = () => {
   return <div className="w-full m-auto max-w-sm flex flex-row flex-wrap gap-2 h-fit items-center justify-center">
-    {primarySkills.map((skill) => <div key={skill}><Badge>{skill}</Badge></div>)}
-    {secondarySkills.map((skill) => <div key={skill}><Badge variant="secondary">{skill}</Badge></div>)}
+    {primarySkills.map((skill) => <div key={skill}><Badge className="pointer-events-none">{skill}</Badge></div>)}
+    {secondarySkills.map((skill) => <div key={skill}><Badge className="pointer-events-none" variant="secondary">{skill}</Badge></div>)}
   </div>
 }
 
@@ -72,7 +72,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
       <div className="text-sm">
         {project.date}
       </div>
-      <Separator className="-mr-2 md:-mr-8 w-32" />
+      <Separator className="-mr-2 md:-mr-8 w-32 bg-current" />
       <Card className="w-full shadow-none md:shadow-sm border-0 md:border">
         <CardHeader className="w-full p-2 md:p-6">
           <CardTitle>
@@ -105,7 +105,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
       <div className="text-sm">
         {experience.endDate ? experience.endDate : "now"}
       </div>
-      <Separator className="-ml-2 md:-ml-8 w-32" />
+      <Separator className="-ml-2 md:-ml-8 w-32 bg-current" />
       <Card className="w-full shadow-none md:shadow-sm border-0 md:border">
         <CardHeader className="w-full p-2 md:p-6">
           <CardTitle className="w-full flex flex-col gap-2">
