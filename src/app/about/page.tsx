@@ -8,7 +8,7 @@ import Link from "next/link"
 
 export default async function Home() {
   return (
-    <main className="flex w-full max-w-7xl h-full flex-col p-2 md:p-8 gap-4 md:gap-8">
+    <main className="flex w-full max-w-7xl h-full flex-col p-2 md:p-8 gap-12 md:gap-24">
       <div className="flex flex-col md:flex-row">
         <AboutLong />
         <Skills />
