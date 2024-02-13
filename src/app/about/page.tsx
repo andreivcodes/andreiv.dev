@@ -49,7 +49,7 @@ const Skills = () => {
 
 const AboutLong = () => {
   return (
-    <Card className="border-0 md:border flex flex-col gap-4 max-w-xl">
+    <Card className="shadow-none md:shadow-sm border-0 md:border flex flex-col gap-4 max-w-xl">
       <CardHeader className="flex flex-col">
         <div className="font-mono font-bold text-3xl">Andrei Voinea</div>
         <div className="font-mono">Full Stack Engineer</div>
@@ -73,7 +73,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         {project.date}
       </div>
       <Separator className="-mr-2 md:-mr-8 w-32" />
-      <Card className="w-full border-0 md:border">
+      <Card className="w-full shadow-none md:shadow-sm border-0 md:border">
         <CardHeader className="w-full p-2 md:p-6">
           <CardTitle>
             <Link href={`/projects/${project.slug}`}>{project.name}</Link>
@@ -106,7 +106,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         {experience.endDate ? experience.endDate : "now"}
       </div>
       <Separator className="-ml-2 md:-ml-8 w-32" />
-      <Card className="w-full border-0 md:border">
+      <Card className="w-full shadow-none md:shadow-sm border-0 md:border">
         <CardHeader className="w-full p-2 md:p-6">
           <CardTitle className="w-full flex flex-col gap-2">
 
