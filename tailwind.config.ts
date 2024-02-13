@@ -9,6 +9,11 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
+  safelist: [
+    ...Array.from({ length: 100 }, (_, i) => ({
+      pattern: new RegExp(`pt-[${i + 1}px]`),
+    })),
+  ],
   prefix: "",
   theme: {
     container: {

@@ -14,7 +14,7 @@ export default async function Blog() {
   return (
     <div className="w-full max-w-4xl flex flex-col p-4 gap-4">
       {allProjects
-        .sort((a, b) => parseISO(b.date).getTime() - parseISO(a.date).getTime())
+        .sort((a, b) => a.index - b.index)
         .map((project) => (
           <ProjectCard
             key={project.name}
@@ -44,7 +44,7 @@ const ProjectCard = ({
           <LinkIcon className="w-4 h-4" />{project.url}
         </Link>
         <div className="text-xs font-thin font-mono text-stone-400">
-          {format(parseISO(project.date), "LLLL d, yyyy")}
+          {project.date}
         </div>
       </CardFooter>
     </Card>
