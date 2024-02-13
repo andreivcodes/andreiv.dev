@@ -6,7 +6,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Project, allProjects } from "contentlayer/generated";
-import { format, parseISO } from "date-fns";
 import { LinkIcon } from "lucide-react";
 import Link from "next/link";
 

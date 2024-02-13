@@ -16,7 +16,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     <article className="w-full max-w-4xl flex flex-col p-4 gap-4">
       <div className="mb-8">
         <time dateTime={project.date} className="mb-1 text-xs text-gray-600">
-          {format(parseISO(project.date), "LLLL d, yyyy")}
+          {project.date}
         </time>
         <h1 className="font-mono text-3xl">{project.name}</h1>
       </div>
