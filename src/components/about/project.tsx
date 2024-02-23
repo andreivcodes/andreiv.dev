@@ -5,20 +5,15 @@ import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 
 
-export const Projects = ({ hidden }: { hidden: boolean }) => {
-  if (hidden)
-    return (<div className="flex flex-col">
-      <div className="text-xl font-bold my-8 rotate-90" >Projects</div>
-    </div>)
-  else
-    return (<div className="flex flex-col gap-8">
-      <div className="text-2xl font-bold mb-4 text-center md:text-left" >Projects</div>
-      <div>
-        {allProjects.sort((a, b) => a.index - b.index).map((project) => (
-          <ProjectCard key={project._id} project={project} hidden={false} />
-        ))}
-      </div>
-    </div>)
+export const Projects = ({ withTitle }: { withTitle: boolean }) => {
+  return (<div className="flex flex-col gap-8">
+    {withTitle && <div className="text-2xl font-bold mb-4 text-center md:text-left">Projects</div>}
+    <div>
+      {allProjects.sort((a, b) => a.index - b.index).map((project) => (
+        <ProjectCard key={project._id} project={project} hidden={false} />
+      ))}
+    </div>
+  </div>)
 }
 
 export const ProjectCard = ({ project, hidden }: { project: Project, hidden: boolean }) => {

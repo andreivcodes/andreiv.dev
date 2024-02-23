@@ -4,20 +4,15 @@ import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { Separator } from "../ui/separator";
 
 
-export const Experiences = ({ hidden }: { hidden: boolean }) => {
-  if (hidden)
-    return (<div className="flex flex-col">
-      <div className="text-xl font-bold my-8 rotate-90" > Experience</div>
-    </div>)
-  else
-    return (<div className="flex flex-col gap-8">
-      <div className="text-2xl font-bold mb-4 text-center md:text-left" >Experience</div>
-      <div>
-        {allExperiences.sort((a, b) => a.index - b.index).map((experience) => (
-          <ExperienceCard key={experience._id} experience={experience} hidden={false} />
-        ))}
-      </div>
-    </div>)
+export const Experiences = ({ withTitle }: { withTitle: boolean }) => {
+  return (<div className="flex flex-col gap-8">
+    {withTitle && <div className="text-2xl font-bold mb-4 text-center md:text-left">Experience</div>}
+    <div>
+      {allExperiences.sort((a, b) => a.index - b.index).map((experience) => (
+        <ExperienceCard key={experience._id} experience={experience} hidden={false} />
+      ))}
+    </div>
+  </div>)
 };
 
 export const ExperienceCard = ({ experience, hidden }: { experience: Experience, hidden: boolean }) => {
