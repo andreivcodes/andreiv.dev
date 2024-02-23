@@ -15,7 +15,7 @@ export default function Home() {
         <Skills />
       </div>
 
-      <div className="w-full flex flex-col justify-center items-center px-4 lg:hidden">
+      <div className="w-full flex flex-col justify-center items-center px-4 md:hidden">
         <Tabs defaultValue="experience" className="justify-center flex flex-col" >
           <TabsList className="self-center">
             <TabsTrigger value="projects">Projects</TabsTrigger>
@@ -36,7 +36,7 @@ export default function Home() {
         </Tabs>
       </div>
 
-      <div className="hidden lg:grid grid-flow-col auto-cols-auto gap-2 md:gap-8 transition-all duration-1000">
+      <div className="hidden md:grid grid-flow-col auto-cols-auto gap-8">
         <Projects withTitle={true} />
         <div className="inset-y-0 bg-current w-px"></div>
         <Experiences withTitle={true} />
