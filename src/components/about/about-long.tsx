@@ -13,7 +13,7 @@ export const AboutLong = () => {
         </div>
       </CardHeader>
       <CardContent className="font-mono text-sm">
-        Former principal engineer at a leading tier 1 automotive supplier and failed startup cofounder,
+        Former senior engineer at a leading tier 1 automotive supplier and failed startup cofounder,
         now diving into the exciting world of web technologies, web3, and entrepreneurship.
       </CardContent>
     </Card>
