@@ -1,4 +1,3 @@
-import { format, parseISO } from "date-fns";
 import { allProjects } from "contentlayer/generated";
 import { getMDXComponent } from "next-contentlayer/hooks";
 

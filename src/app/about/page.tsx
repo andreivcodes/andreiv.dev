@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
 import { AboutLong } from "@/components/about/about-long";
 import { Experiences } from "@/components/about/experience";
 import { Projects } from "@/components/about/project";
 import { Skills } from "@/components/about/skills";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 
 export default function Home() {
   return (
@@ -16,7 +15,10 @@ export default function Home() {
       </div>
 
       <div className="w-full flex flex-col justify-center items-center px-4 md:hidden">
-        <Tabs defaultValue="experience" className="justify-center flex flex-col" >
+        <Tabs
+          defaultValue="experience"
+          className="justify-center flex flex-col"
+        >
           <TabsList className="self-center">
             <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="experience">Experience</TabsTrigger>
@@ -41,7 +43,6 @@ export default function Home() {
         <div className="inset-y-0 bg-current w-px"></div>
         <Experiences withTitle={true} />
       </div>
-
-    </main >
+    </main>
   );
 }
