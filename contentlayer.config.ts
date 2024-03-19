@@ -46,11 +46,9 @@ export const Project = defineDocumentType(() => ({
     },
     index: {
       type: "number",
-      required: true,
     },
     aboutTopPadding: {
       type: "number",
-      required: false
     },
     name: {
       type: "string",
@@ -69,11 +67,9 @@ export const Project = defineDocumentType(() => ({
     },
     url: {
       type: "string",
-      required: false
     },
     repository: {
       type: "string",
-      required: false
     },
     stackPrimary: {
       type: "list",

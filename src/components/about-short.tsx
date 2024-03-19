@@ -7,32 +7,33 @@ import { Separator } from "./ui/separator";
 
 const taglines = [
   [
-    { text: "selectively", },
-    { text: "dumb,", },
-    { text: "overall", },
-    { text: "smart", },
+    { text: "selectively" },
+    { text: "dumb," },
+    { text: "overall" },
+    { text: "smart" },
   ],
   [
-    { text: "in", },
-    { text: "a", },
-    { text: "world", },
-    { text: "of", },
-    { text: "talkers,", },
-    { text: "be", },
-    { text: "a", },
-    { text: "thinker", },
-    { text: "and", },
-    { text: "a", },
-    { text: "doer", },
+    { text: "in" },
+    { text: "a" },
+    { text: "world" },
+    { text: "of" },
+    { text: "talkers," },
+    { text: "be" },
+    { text: "a" },
+    { text: "thinker" },
+    { text: "and" },
+    { text: "a" },
+    { text: "doer" },
   ],
   [
-    { text: "I", },
-    { text: "broke", },
-    { text: "prod", },
-    { text: "on", },
-    { text: "Christmas", },
-    { text: "Eve", },
+    { text: "I" },
+    { text: "broke" },
+    { text: "prod" },
+    { text: "on" },
+    { text: "Christmas" },
+    { text: "Eve" },
   ],
+  [{ text: "made" }, { text: "cars" }, { text: "go" }, { text: "vroom" }],
 ];
 
 export const AboutShort = () => {
@@ -59,7 +60,11 @@ export const AboutShort = () => {
         </div>
       </div>
       <div className="absolute flex flex-col pt-28 max-w-64">
-        <TypewriterEffect key={currentTaglineIndex} words={taglines[currentTaglineIndex]} className="font-mono font-light text-sm text-left overflow-auto" />
+        <TypewriterEffect
+          key={currentTaglineIndex}
+          words={taglines[currentTaglineIndex]}
+          className="font-mono font-light text-sm text-left overflow-auto"
+        />
       </div>
     </div>
   );

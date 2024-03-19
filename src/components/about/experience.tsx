@@ -23,7 +23,7 @@ export const ExperienceCard = ({ experience, hidden }: { experience: Experience,
     return (
       <div className={`w-full flex flex-col items-start gap-2 pt-${experience.aboutTopPadding ?? 0}`}>
         <div className="text-sm">
-          {experience.startDate} -  {experience.endDate ? experience.endDate : "now"}
+          {experience.startDate} - {experience.endDate ? experience.endDate : "now"}
         </div>
         <Separator className="-ml-2 md:-ml-8 w-32 bg-current" />
         <Card className="w-full shadow-none md:shadow-sm border-0 md:border">
