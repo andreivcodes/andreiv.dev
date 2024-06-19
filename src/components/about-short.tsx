@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { GlobeIcon } from "lucide-react";
 import { TypewriterEffect } from "./ui/typewriter-effect";
-import { Separator } from "./ui/separator";
 
 const taglines = [
   [
@@ -11,6 +10,22 @@ const taglines = [
     { text: "dumb," },
     { text: "overall" },
     { text: "smart" },
+  ],
+  [{ text: "unironically" }, { text: "likes" }, { text: "crypto" }],
+  [
+    { text: "broke" },
+    { text: "prod" },
+    { text: "on" },
+    { text: "Christmas" },
+    { text: "Eve" },
+  ],
+  [{ text: "made" }, { text: "cars" }, { text: "go" }, { text: "vroom" }],
+  [
+    { text: "codes" },
+    { text: "solutions" },
+    { text: "looking" },
+    { text: "for" },
+    { text: "problems" },
   ],
   [
     { text: "in" },
@@ -25,15 +40,6 @@ const taglines = [
     { text: "a" },
     { text: "doer" },
   ],
-  [
-    { text: "I" },
-    { text: "broke" },
-    { text: "prod" },
-    { text: "on" },
-    { text: "Christmas" },
-    { text: "Eve" },
-  ],
-  [{ text: "made" }, { text: "cars" }, { text: "go" }, { text: "vroom" }],
 ];
 
 export const AboutShort = () => {
@@ -42,7 +48,7 @@ export const AboutShort = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTaglineIndex((prevIndex) =>
-        prevIndex === taglines.length - 1 ? 0 : prevIndex + 1
+        prevIndex === taglines.length - 1 ? 0 : prevIndex + 1,
       );
     }, 3500);
 
