@@ -43,18 +43,18 @@ const BlogCard = ({
 }) => {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>
-          <Link href={`/blog/${slug}`}>{title}</Link>
-        </CardTitle>
-        <CardDescription>{short}</CardDescription>
-      </CardHeader>
+      <Link href={`/blog/${slug}`}>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>{short}</CardDescription>
+        </CardHeader>
 
-      <CardFooter className="w-full justify-end">
-        <div className="text-xs font-thin font-mono text-stone-400">
-          {format(parseISO(date), "LLLL d, yyyy")} - {wordCount} words
-        </div>
-      </CardFooter>
+        <CardFooter className="w-full justify-end">
+          <div className="text-xs font-thin font-mono text-stone-400">
+            {format(parseISO(date), "LLLL d, yyyy")} - {wordCount} words
+          </div>
+        </CardFooter>
+      </Link>
     </Card>
   );
 };

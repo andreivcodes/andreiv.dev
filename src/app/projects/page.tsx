@@ -25,31 +25,31 @@ export default async function Blog() {
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>
-          <Link href={`/projects/${project.slug}`}>{project.name}</Link>
-        </CardTitle>
-        <CardDescription>{project.shortDescription}</CardDescription>
-      </CardHeader>
+      <Link href={`/projects/${project.slug}`}>
+        <CardHeader>
+          <CardTitle>{project.name}</CardTitle>
+          <CardDescription>{project.shortDescription}</CardDescription>
+        </CardHeader>
 
-      <CardFooter className="w-full justify-between">
-        {project.url ? (
-          <Link
-            href={project.url}
-            target="_blank"
-            className="flex flex-row gap-2 items-center fill-stone-400 text-stone-400"
-          >
-            <LinkIcon className="w-4 h-4" />
-            {project.url}
-          </Link>
-        ) : (
-          <div></div>
-        )}
+        <CardFooter className="w-full justify-between">
+          {project.url ? (
+            <Link
+              href={project.url}
+              target="_blank"
+              className="flex flex-row gap-2 items-center fill-stone-400 text-stone-400"
+            >
+              <LinkIcon className="w-4 h-4" />
+              {project.url}
+            </Link>
+          ) : (
+            <div></div>
+          )}
 
-        <div className="text-xs font-thin font-mono text-stone-400">
-          {project.date}
-        </div>
-      </CardFooter>
+          <div className="text-xs font-thin font-mono text-stone-400">
+            {project.date}
+          </div>
+        </CardFooter>
+      </Link>
     </Card>
   );
 };
