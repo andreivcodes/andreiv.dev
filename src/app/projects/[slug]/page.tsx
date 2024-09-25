@@ -1,15 +1,15 @@
-import { allProjects } from "contentlayer/generated";
-import { getMDXComponent } from "next-contentlayer/hooks";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
-export const generateMetadata = ({ params }) => {
-  const project = allProjects.find((project) => project.slug === params.slug);
-  return { name: project.name };
-};
+export async function generateMetadata({ params }) {
+  const project = await getProject(params.slug);
+  return { title: project.name };
+}
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const project = allProjects.find((project) => project.slug === params.slug);
-
-  const Content = getMDXComponent(project.body.code);
+const ProjectLayout = async ({ params }: { params: { slug: string } }) => {
+  const project = await getProject(params.slug);
 
   return (
     <article className="w-full max-w-4xl flex flex-col p-4 gap-4">
@@ -19,9 +19,23 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         </time>
         <h1 className="font-mono text-3xl">{project.name}</h1>
       </div>
-      <Content />
+      <MDXRemote source={project.content} />
     </article>
   );
 };
 
-export default PostLayout;
+async function getProject(slug: string) {
+  const projectsDirectory = path.join(process.cwd(), "data/projects");
+  const fullPath = path.join(projectsDirectory, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    name: data.name,
+    date: data.date,
+    content: content,
+  };
+}
+
+export default ProjectLayout;

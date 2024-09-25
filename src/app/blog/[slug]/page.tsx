@@ -1,28 +1,42 @@
-import { format, parseISO } from "date-fns";
-import { allBlogPosts } from "contentlayer/generated";
-import { getMDXComponent } from "next-contentlayer/hooks";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { format } from "date-fns";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
-export const generateMetadata = ({ params }) => {
-  const post = allBlogPosts.find((post) => post.slug === params.slug);
+export async function generateMetadata({ params }) {
+  const post = await getPost(params.slug);
   return { title: post.title };
-};
+}
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = allBlogPosts.find((post) => post.slug === params.slug);
-
-  const Content = getMDXComponent(post.body.code);
+const PostLayout = async ({ params }: { params: { slug: string } }) => {
+  const post = await getPost(params.slug);
 
   return (
     <article className="w-full max-w-4xl flex flex-col p-4 gap-4">
       <div className="mb-8">
         <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
-          {format(parseISO(post.date), "LLLL d, yyyy")}
+          {format(new Date(post.date), "LLLL d, yyyy")}
         </time>
         <h1 className="font-mono text-3xl">{post.title}</h1>
       </div>
-      <Content />
+      <MDXRemote source={post.content} />
     </article>
   );
 };
+
+async function getPost(slug: string) {
+  const postsDirectory = path.join(process.cwd(), "data/blog");
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    title: data.title,
+    date: data.date,
+    content: content,
+  };
+}
 
 export default PostLayout;

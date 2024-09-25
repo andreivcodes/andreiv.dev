@@ -1,4 +1,4 @@
-import { Project, allProjects } from "contentlayer/generated";
+import React from "react";
 import {
   Card,
   CardHeader,
@@ -9,8 +9,32 @@ import {
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
+import { getProjects } from "@/lib/mdx";
+
+interface Project {
+  _id: string;
+  name: string;
+  slug: string;
+  date: string;
+  shortDescription: string;
+  inAbout: boolean;
+  index: number;
+  aboutTopPadding: number;
+  stackPrimary?: string[];
+  stackSecondary?: string[];
+}
 
 export const Projects = ({ withTitle }: { withTitle: boolean }) => {
+  const [projects, setProjects] = React.useState<Project[]>([]);
+
+  React.useEffect(() => {
+    async function loadProjects() {
+      const projectData = await getProjects();
+      setProjects(projectData as Project[]);
+    }
+    loadProjects();
+  }, []);
+
   return (
     <div className="flex flex-col gap-8">
       {withTitle && (
@@ -19,7 +43,7 @@ export const Projects = ({ withTitle }: { withTitle: boolean }) => {
         </div>
       )}
       <div>
-        {allProjects
+        {projects
           .filter((p) => p.inAbout)
           .sort((a, b) => a.index - b.index)
           .map((project) => (
@@ -37,46 +61,45 @@ export const ProjectCard = ({
   project: Project;
   hidden: boolean;
 }) => {
-  if (hidden) return <></>;
-  else
-    return (
-      <div
-        className={`w-full flex flex-col items-end gap-2 pt-${project.aboutTopPadding}`}
-      >
-        <div className="text-sm">{project.date}</div>
-        <Separator className="-mr-2 md:-mr-8 w-32 bg-current" />
-        <Card className="w-full shadow-none md:shadow-sm border-0 md:border">
-          <CardHeader className="w-full p-2 md:p-6">
-            <CardTitle>
-              <Link href={`/projects/${project.slug}`}>{project.name}</Link>
-            </CardTitle>
-          </CardHeader>
+  if (hidden) return null;
+  return (
+    <div
+      className={`w-full flex flex-col items-end gap-2 pt-${project.aboutTopPadding}`}
+    >
+      <div className="text-sm">{project.date}</div>
+      <Separator className="-mr-2 md:-mr-8 w-32" />
+      <Card className="w-full shadow-none md:shadow-sm border-0 md:border">
+        <CardHeader className="w-full p-2 md:p-6">
+          <CardTitle>
+            <Link href={`/projects/${project.slug}`}>{project.name}</Link>
+          </CardTitle>
+        </CardHeader>
 
-          <CardContent className="text-sm">
-            {project.shortDescription}
-          </CardContent>
+        <CardContent className="text-sm">
+          {project.shortDescription}
+        </CardContent>
 
-          <CardFooter className="w-full flex flex-col md:flex-row justify-between p-2 md:p-6">
-            <div className="flex flex-wrap gap-2">
-              {project.stackPrimary &&
-                project.stackPrimary.map((stack) => (
-                  <Badge className="pointer-events-none" key={stack}>
-                    {stack}
-                  </Badge>
-                ))}
-              {project.stackSecondary &&
-                project.stackSecondary.map((stack) => (
-                  <Badge
-                    className="pointer-events-none"
-                    variant="secondary"
-                    key={stack}
-                  >
-                    {stack}
-                  </Badge>
-                ))}
-            </div>
-          </CardFooter>
-        </Card>
-      </div>
-    );
+        <CardFooter className="w-full flex flex-col md:flex-row justify-between p-2 md:p-6">
+          <div className="flex flex-wrap gap-2">
+            {project.stackPrimary &&
+              project.stackPrimary.map((stack) => (
+                <Badge className="pointer-events-none" key={stack}>
+                  {stack}
+                </Badge>
+              ))}
+            {project.stackSecondary &&
+              project.stackSecondary.map((stack) => (
+                <Badge
+                  className="pointer-events-none"
+                  variant="secondary"
+                  key={stack}
+                >
+                  {stack}
+                </Badge>
+              ))}
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  );
 };

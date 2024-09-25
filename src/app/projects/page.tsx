@@ -1,3 +1,6 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import {
   Card,
   CardDescription,
@@ -5,21 +8,29 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Project, allProjects } from "contentlayer/generated";
-import { parseISO } from "date-fns";
 import { LinkIcon } from "lucide-react";
 import Link from "next/link";
 
-export default async function Blog() {
+export default async function Projects() {
+  const projects = await getProjects();
+
   return (
     <div className="w-full max-w-4xl flex flex-col p-4 gap-4">
-      {allProjects
-        .sort((a, b) => parseISO(b.date).getTime() - parseISO(a.date).getTime())
+      {projects
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}
     </div>
   );
+}
+
+interface Project {
+  slug: string;
+  name: string;
+  shortDescription: string;
+  url?: string;
+  date: string;
 }
 
 const ProjectCard = ({ project }: { project: Project }) => {
@@ -53,3 +64,25 @@ const ProjectCard = ({ project }: { project: Project }) => {
     </Card>
   );
 };
+
+async function getProjects(): Promise<Project[]> {
+  const projectsDirectory = path.join(process.cwd(), "data/projects");
+  const fileNames = fs.readdirSync(projectsDirectory);
+
+  const projects = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.mdx$/, "");
+    const fullPath = path.join(projectsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data } = matter(fileContents);
+
+    return {
+      slug,
+      name: data.name,
+      shortDescription: data.shortDescription,
+      url: data.url,
+      date: data.date,
+    };
+  });
+
+  return projects;
+}
