@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "andreiv.dev",
   description: "my small corner of the internet",
+  icons: [{ rel: "icon", url: "/logo.svg", type: "image/svg+xml" }],
 };
 
 export default function RootLayout({
