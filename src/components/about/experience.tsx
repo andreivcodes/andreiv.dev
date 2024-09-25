@@ -1,19 +1,10 @@
-import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { Separator } from "../ui/separator";
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import { getExperiences } from "@/lib/mdx";
 
-export const Experiences = ({ withTitle }: { withTitle: boolean }) => {
-  const [experiences, setExperiences] = React.useState([]);
-
-  React.useEffect(() => {
-    async function loadExperiences() {
-      const experienceData = await getExperiences();
-      setExperiences(experienceData);
-    }
-    loadExperiences();
-  }, []);
+export const Experiences = async ({ withTitle }: { withTitle: boolean }) => {
+  const experiences = await getExperiences();
 
   return (
     <div className="flex flex-col gap-8">

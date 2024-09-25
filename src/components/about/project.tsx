@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Card,
   CardHeader,
@@ -11,29 +10,8 @@ import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 import { getProjects } from "@/lib/mdx";
 
-interface Project {
-  _id: string;
-  name: string;
-  slug: string;
-  date: string;
-  shortDescription: string;
-  inAbout: boolean;
-  index: number;
-  aboutTopPadding: number;
-  stackPrimary?: string[];
-  stackSecondary?: string[];
-}
-
-export const Projects = ({ withTitle }: { withTitle: boolean }) => {
-  const [projects, setProjects] = React.useState<Project[]>([]);
-
-  React.useEffect(() => {
-    async function loadProjects() {
-      const projectData = await getProjects();
-      setProjects(projectData as Project[]);
-    }
-    loadProjects();
-  }, []);
+export const Projects = async ({ withTitle }: { withTitle: boolean }) => {
+  const projects = await getProjects();
 
   return (
     <div className="flex flex-col gap-8">
@@ -47,7 +25,7 @@ export const Projects = ({ withTitle }: { withTitle: boolean }) => {
           .filter((p) => p.inAbout)
           .sort((a, b) => a.index - b.index)
           .map((project) => (
-            <ProjectCard key={project._id} project={project} hidden={false} />
+            <ProjectCard key={project.slug} project={project} hidden={false} />
           ))}
       </div>
     </div>
@@ -58,7 +36,7 @@ export const ProjectCard = ({
   project,
   hidden,
 }: {
-  project: Project;
+  project: any;
   hidden: boolean;
 }) => {
   if (hidden) return null;

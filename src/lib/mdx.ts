@@ -19,6 +19,7 @@ export async function getExperiences() {
 
       return {
         slug,
+        index: data.index,
         content: mdxSource,
         ...data,
       };
@@ -40,6 +41,8 @@ export async function getProjects() {
 
     return {
       slug,
+      index: data.index,
+      inAbout: data.inAbout,
       ...data,
     };
   });

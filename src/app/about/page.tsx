@@ -1,12 +1,10 @@
-"use client";
-
 import { AboutLong } from "@/components/about/about-long";
 import { Experiences } from "@/components/about/experience";
 import { Projects } from "@/components/about/project";
 import { Skills } from "@/components/about/skills";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function Home() {
+export default async function About() {
   return (
     <main className="flex w-full max-w-7xl h-full flex-col p-2 md:p-8 gap-12 md:gap-24">
       <div className="flex flex-col md:flex-row">
