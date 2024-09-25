@@ -5,7 +5,7 @@ import {
   Tweet as ScrapedTweet,
 } from "@the-convocation/twitter-scraper";
 
-export const revalidate = 3600
+export const revalidate = 3600;
 
 export default async function Home() {
   try {

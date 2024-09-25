@@ -3,6 +3,10 @@ import path from "path";
 import matter from "gray-matter";
 import { format } from "date-fns";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import rehypePrism from "rehype-prism-plus";
+import rehypeStringify from "rehype-stringify";
+import remarkParse from "remark-parse";
 
 export async function generateMetadata({ params }) {
   const post = await getPost(params.slug);
@@ -20,7 +24,15 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
         </time>
         <h1 className="font-mono text-3xl">{post.title}</h1>
       </div>
-      <MDXRemote source={post.content} />
+      <MDXRemote
+        source={post.content}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm, remarkParse],
+            rehypePlugins: [rehypeStringify, rehypePrism],
+          },
+        }}
+      />
     </article>
   );
 };
