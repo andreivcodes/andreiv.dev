@@ -58,7 +58,13 @@ qm set 9000 --boot c --bootdisk scsi0
 qm set 9000 --serial0 socket --vga serial0
 ```
 
-8. Configure cloud-init:
+8. Enable QEMU guest agent:
+
+```bash
+qm set 9000 --agent enabled=1
+```
+
+9. Configure cloud-init:
 
 ```bash
 qm set 9000 --ciuser your_username
@@ -68,13 +74,13 @@ qm set 9000 --sshkeys ~/.ssh/id_rsa.pub
 
 Replace `your_username`, `your_password`, and the SSH key path with your desired values.
 
-9. Configure network to use DHCP:
+10. Configure network to use DHCP:
 
 ```bash
 qm set 9000 --ipconfig0 ip=dhcp
 ```
 
-10. Convert the VM to a template:
+11. Convert the VM to a template:
 
 ```bash
 qm template 9000
