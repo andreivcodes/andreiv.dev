@@ -68,11 +68,18 @@ qm set 9000 --sshkeys ~/.ssh/id_rsa.pub
 
 Replace `your_username`, `your_password`, and the SSH key path with your desired values.
 
-9. Convert the VM to a template:
+9. Configure network to use DHCP:
+
+```bash
+qm set 9000 --ipconfig0 ip=dhcp
+```
+
+10. Convert the VM to a template:
 
 ```bash
 qm template 9000
 ```
+
 
 ## Using the Template
 
