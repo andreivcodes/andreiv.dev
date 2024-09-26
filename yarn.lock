@@ -2023,12 +2023,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.7.0":
-  version: 22.7.0
-  resolution: "@types/node@npm:22.7.0"
+"@types/node@npm:^22.7.2":
+  version: 22.7.2
+  resolution: "@types/node@npm:22.7.2"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/127b1ac3eebe8c2b09e3d2de277ee906710c4908b4573cde23b9c7cec1cb1aaf1af8bdabbccdac08d005f820b770e7447b22c8eb56ca63344f4d2e26bcdc29fb
+  checksum: 10c0/987e4df034e4af0ce76b938c2c0d94373da376b228f1c93081a661c77e682795c599bcad47c93c70a25b8ea443587137cf23088fb7f62ef442955f13046eae3d
   languageName: node
   linkType: hard
 
@@ -2320,7 +2320,7 @@ __metadata:
     "@radix-ui/react-tooltip": "npm:^1.1.2"
     "@the-convocation/twitter-scraper": "npm:^0.14.1"
     "@types/mdx": "npm:^2.0.13"
-    "@types/node": "npm:^22.7.0"
+    "@types/node": "npm:^22.7.2"
     "@types/react": "npm:^18.3.9"
     "@types/react-dom": "npm:^18.3.0"
     autoprefixer: "npm:^10.4.20"
@@ -2357,7 +2357,7 @@ __metadata:
     tailwindcss: "npm:^3.4.13"
     tailwindcss-animate: "npm:^1.0.7"
     typescript: "npm:^5.6.2"
-    vaul: "npm:^0.9.6"
+    vaul: "npm:^0.9.9"
     zod: "npm:^3.23.8"
   languageName: unknown
   linkType: soft
@@ -7898,15 +7898,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vaul@npm:^0.9.6":
-  version: 0.9.6
-  resolution: "vaul@npm:0.9.6"
+"vaul@npm:^0.9.9":
+  version: 0.9.9
+  resolution: "vaul@npm:0.9.9"
   dependencies:
     "@radix-ui/react-dialog": "npm:^1.1.1"
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/2267aaa101e63cfa9a6988341f41ecaaddabfd1209cccd9bb90cf88d912a1712a4bffc5fde120e18a51a1d76554e9ba8aa52f1b7bcc7824fe1ffb6cfdd90984e
+  checksum: 10c0/cd6b1f00efeab4c26abde3ac365f762bd922d5482725f88d1883c57c3e933d1f75e0feafb9ebfc2b5a66277c3fa492172d2a68965d79a54949540414469f5249
   languageName: node
   linkType: hard
 
