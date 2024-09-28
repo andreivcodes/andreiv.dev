@@ -9,7 +9,7 @@ import "prism-themes/themes/prism-vsc-dark-plus.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "andreiv.dev",
+  title: "andreiv.com",
   description: "my small corner of the internet",
   icons: [{ rel: "icon", url: "/logo.svg", type: "image/svg+xml" }],
 };
