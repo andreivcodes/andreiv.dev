@@ -28,6 +28,14 @@ export const Experiences = async ({ withTitle }: { withTitle: boolean }) => {
   );
 };
 
+const components = {
+  h1: (props: any) => <h1 className="text-2xl font-bold mb-4" {...props} />,
+  h2: (props: any) => <h2 className="text-xl font-semibold mb-3" {...props} />,
+  p: (props: any) => <p className="mb-2" {...props} />,
+  ul: (props: any) => <ul className="list-disc list-inside mb-2" {...props} />,
+  li: (props: any) => <li className="mb-1" {...props} />,
+};
+
 export const ExperienceCard = ({
   experience,
   hidden,
@@ -63,8 +71,8 @@ export const ExperienceCard = ({
             </div>
           </CardTitle>
         </CardHeader>
-        <CardContent className="text-sm">
-          <MDXRemote {...experience.content} />
+        <CardContent className="text-sm prose prose-sm max-w-none">
+          {experience.content}
         </CardContent>
       </Card>
     </div>
