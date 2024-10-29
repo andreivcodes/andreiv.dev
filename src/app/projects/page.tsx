@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { LinkIcon } from "lucide-react";
 import Link from "next/link";
+import { getProjects, ProjectType } from "@/lib/mdx";
 
 export default async function Projects() {
   const projects = await getProjects();
@@ -17,7 +18,7 @@ export default async function Projects() {
   return (
     <div className="w-full max-w-4xl flex flex-col p-4 gap-4">
       {projects
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .sort((a, b) => a.index - b.index)
         .map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}
@@ -25,15 +26,7 @@ export default async function Projects() {
   );
 }
 
-interface Project {
-  slug: string;
-  name: string;
-  shortDescription: string;
-  url?: string;
-  date: string;
-}
-
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({ project }: { project: ProjectType }) => {
   return (
     <Card>
       <Link href={`/projects/${project.slug}`}>
@@ -43,14 +36,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </CardHeader>
 
         <CardFooter className="w-full justify-between">
-          {project.url ? (
+          {project.url || project.demoUrl ? (
             <Link
-              href={project.url}
+              href={project.url ?? project.demoUrl}
               target="_blank"
               className="flex flex-row gap-2 items-center fill-stone-400 text-stone-400"
             >
               <LinkIcon className="w-4 h-4" />
-              {project.url}
+              {project.url ?? `Demo: ${project.demoUrl}`}
             </Link>
           ) : (
             <div></div>
@@ -64,25 +57,3 @@ const ProjectCard = ({ project }: { project: Project }) => {
     </Card>
   );
 };
-
-async function getProjects(): Promise<Project[]> {
-  const projectsDirectory = path.join(process.cwd(), "data/projects");
-  const fileNames = fs.readdirSync(projectsDirectory);
-
-  const projects = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx$/, "");
-    const fullPath = path.join(projectsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data } = matter(fileContents);
-
-    return {
-      slug,
-      name: data.name,
-      shortDescription: data.shortDescription,
-      url: data.url,
-      date: data.date,
-    };
-  });
-
-  return projects;
-}

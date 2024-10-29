@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { format, parseISO } from "date-fns";
 import Link from "next/link";
+import { getBlogPosts } from "@/lib/mdx";
 
 export default async function Blog() {
   const blogPosts = await getBlogPosts();
@@ -73,26 +74,4 @@ function formatDate(dateString: string): string {
     console.error("Error formatting date:", error);
     return dateString; // Return the original string if parsing fails
   }
-}
-
-async function getBlogPosts() {
-  const postsDirectory = path.join(process.cwd(), "data/blog");
-  const fileNames = fs.readdirSync(postsDirectory);
-
-  const posts = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx$/, "");
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
-
-    return {
-      slug,
-      title: data.title,
-      date: data.date,
-      short: data.short,
-      wordCount: content.split(/\s+/).length,
-    };
-  });
-
-  return posts;
 }

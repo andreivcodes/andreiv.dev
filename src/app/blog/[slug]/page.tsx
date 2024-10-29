@@ -7,14 +7,15 @@ import remarkGfm from "remark-gfm";
 import rehypePrism from "rehype-prism-plus";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
+import { getBlogPost } from "@/lib/mdx";
 
 export async function generateMetadata({ params }) {
-  const post = await getPost(params.slug);
+  const post = await getBlogPost(params.slug);
   return { title: post.title };
 }
 
 const PostLayout = async ({ params }: { params: { slug: string } }) => {
-  const post = await getPost(params.slug);
+  const post = await getBlogPost(params.slug);
 
   return (
     <article className="w-full max-w-4xl flex flex-col p-4 gap-4">
@@ -36,19 +37,5 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
     </article>
   );
 };
-
-async function getPost(slug: string) {
-  const postsDirectory = path.join(process.cwd(), "data/blog");
-  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  return {
-    slug,
-    title: data.title,
-    date: data.date,
-    content: content,
-  };
-}
 
 export default PostLayout;

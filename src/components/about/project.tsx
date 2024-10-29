@@ -8,7 +8,8 @@ import {
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
-import { getProjects } from "@/lib/mdx";
+import { getProjects, ProjectType } from "@/lib/mdx";
+import { LinkIcon } from "lucide-react";
 
 export const Projects = async ({ withTitle }: { withTitle: boolean }) => {
   const projects = await getProjects();
@@ -36,7 +37,7 @@ export const ProjectCard = ({
   project,
   hidden,
 }: {
-  project: any;
+  project: ProjectType;
   hidden: boolean;
 }) => {
   if (hidden) return null;
@@ -76,6 +77,18 @@ export const ProjectCard = ({
                 </Badge>
               ))}
           </div>
+          {project.url || project.demoUrl ? (
+            <Link
+              href={project.url ?? project.demoUrl}
+              target="_blank"
+              className="flex flex-row gap-2 items-center fill-stone-400 text-stone-400"
+            >
+              <LinkIcon className="w-4 h-4" />
+              {project.url ?? `Demo: ${project.demoUrl}`}
+            </Link>
+          ) : (
+            <div></div>
+          )}
         </CardFooter>
       </Card>
     </div>

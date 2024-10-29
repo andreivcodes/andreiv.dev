@@ -1,7 +1,5 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { getProject } from "@/lib/mdx";
 
 export async function generateMetadata({ params }) {
   const project = await getProject(params.slug);
@@ -23,19 +21,5 @@ const ProjectLayout = async ({ params }: { params: { slug: string } }) => {
     </article>
   );
 };
-
-async function getProject(slug: string) {
-  const projectsDirectory = path.join(process.cwd(), "data/projects");
-  const fullPath = path.join(projectsDirectory, `${slug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  return {
-    slug,
-    name: data.name,
-    date: data.date,
-    content: content,
-  };
-}
 
 export default ProjectLayout;

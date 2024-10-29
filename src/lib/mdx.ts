@@ -25,6 +25,12 @@ export async function getExperiences() {
         slug,
         index: data.index,
         content: mdxContent,
+        startDate: data.startDate,
+        endDate: data.endDate,
+        companyName: data.companyName,
+        companyAbout: data.companyAbout,
+        role: data.role,
+        aboutTopPadding: data.aboutTopPadding,
         ...data,
       };
     }),
@@ -44,16 +50,19 @@ export async function getProjects() {
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
 
-      const { content: mdxContent } = await compileMDX({
-        source: content,
-        options: { parseFrontmatter: true },
-      });
-
       return {
         slug,
+        date: data.date,
+        name: data.name,
+        shortDescription: data.shortDescription,
         index: data.index,
         inAbout: data.inAbout,
-        content: mdxContent,
+        url: data.url,
+        demoUrl: data.demoUrl,
+        content: content,
+        aboutTopPadding: data.aboutTopPadding,
+        stackPrimary: data.stackPrimary,
+        stackSecondary: data.stackSecondary,
         ...data,
       };
     }),
@@ -61,3 +70,72 @@ export async function getProjects() {
 
   return projects;
 }
+
+export async function getProject(slug: string) {
+  const projectsDirectory = path.join(process.cwd(), "data/projects");
+  const fullPath = path.join(projectsDirectory, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    date: data.date,
+    name: data.name,
+    shortDescription: data.shortDescription,
+    index: data.index,
+    inAbout: data.inAbout,
+    url: data.url,
+    demoUrl: data.demoUrl,
+    content: content,
+    aboutTopPadding: data.aboutTopPadding,
+    stackPrimary: data.stackPrimary,
+    stackSecondary: data.stackSecondary,
+    ...data,
+  };
+}
+
+export async function getBlogPosts() {
+  const postsDirectory = path.join(process.cwd(), "data/blog");
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  const posts = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.mdx$/, "");
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    return {
+      slug,
+      title: data.title,
+      date: data.date,
+      short: data.short,
+      wordCount: content.split(/\s+/).length,
+    };
+  });
+
+  return posts;
+}
+
+export async function getBlogPost(slug: string) {
+  const postsDirectory = path.join(process.cwd(), "data/blog");
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    title: data.title,
+    date: data.date,
+    content: content,
+  };
+}
+
+export type AsyncReturnType<T extends (...args: any) => Promise<any>> =
+  T extends (...args: any) => Promise<infer R> ? R : any;
+
+export type ProjectsType = AsyncReturnType<typeof getProjects>;
+export type ExperiencesType = AsyncReturnType<typeof getExperiences>;
+export type BlogPostsType = AsyncReturnType<typeof getBlogPosts>;
+export type ProjectType = AsyncReturnType<typeof getProject>;
+export type ExperienceType = AsyncReturnType<typeof getExperiences>[0];
+export type BlogPostType = AsyncReturnType<typeof getBlogPost>;
