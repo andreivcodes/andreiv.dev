@@ -32,7 +32,7 @@ export const AboutLong = () => {
       <CardContent className="font-mono text-sm">
         Ex-senior engineer at a leading tier 1 automotive supplier and failed
         startup cofounder, now exploring web technologies, web3, DAOs and
-        building new things. Always curious about what's next.
+        building new things. Always curious about what&apos;s next.
       </CardContent>
     </Card>
   );
