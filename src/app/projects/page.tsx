@@ -34,26 +34,26 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
           <CardTitle>{project.name}</CardTitle>
           <CardDescription>{project.shortDescription}</CardDescription>
         </CardHeader>
-
-        <CardFooter className="w-full justify-between">
-          {project.url || project.demoUrl ? (
-            <Link
-              href={project.url ?? project.demoUrl}
-              target="_blank"
-              className="flex flex-row gap-2 items-center fill-stone-400 text-stone-400"
-            >
-              <LinkIcon className="w-4 h-4" />
-              {project.url ?? `Demo: ${project.demoUrl}`}
-            </Link>
-          ) : (
-            <div></div>
-          )}
-
-          <div className="text-xs font-thin font-mono text-stone-400">
-            {project.date}
-          </div>
-        </CardFooter>
       </Link>
+
+      <CardFooter className="w-full justify-between">
+        {project.url || project.demoUrl ? (
+          <Link
+            href={project.url ?? project.demoUrl}
+            target="_blank"
+            className="flex flex-row gap-2 items-center fill-stone-400 text-stone-400"
+          >
+            <LinkIcon className="w-4 h-4" />
+            {project.url ? "Visit Project" : `Demo: ${project.demoUrl}`}
+          </Link>
+        ) : (
+          <div></div>
+        )}
+
+        <div className="text-xs font-thin font-mono text-stone-400">
+          {project.date}
+        </div>
+      </CardFooter>
     </Card>
   );
 };
