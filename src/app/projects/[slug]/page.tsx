@@ -1,13 +1,23 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getProject } from "@/lib/mdx";
 
-export async function generateMetadata({ params }) {
-  const project = await getProject(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = await getProject(slug);
   return { title: project.name };
 }
 
-const ProjectLayout = async ({ params }: { params: { slug: string } }) => {
-  const project = await getProject(params.slug);
+const ProjectLayout = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  const project = await getProject(slug);
 
   return (
     <article className="w-full max-w-4xl flex flex-col p-4 gap-4">

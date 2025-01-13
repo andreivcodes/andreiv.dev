@@ -9,13 +9,23 @@ import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import { getBlogPost } from "@/lib/mdx";
 
-export async function generateMetadata({ params }) {
-  const post = await getBlogPost(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
   return { title: post.title };
 }
 
-const PostLayout = async ({ params }: { params: { slug: string } }) => {
-  const post = await getBlogPost(params.slug);
+const PostLayout = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   return (
     <article className="w-full max-w-4xl flex flex-col p-4 gap-4">
