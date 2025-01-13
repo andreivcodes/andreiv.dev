@@ -44,7 +44,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
             className="flex flex-row gap-2 items-center fill-stone-400 text-stone-400"
           >
             <LinkIcon className="w-4 h-4" />
-            {project.url ? "Visit Project" : `Demo: ${project.demoUrl}`}
+            {project.url ? "Visit Project" : "Visit Demo"}
           </Link>
         ) : (
           <div></div>
