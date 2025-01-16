@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
 
+/** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ["class"],
   content: [

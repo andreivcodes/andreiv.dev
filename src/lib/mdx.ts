@@ -130,6 +130,41 @@ export async function getBlogPost(slug: string) {
   };
 }
 
+export async function getPresentations() {
+  const presentationsDirectory = path.join(process.cwd(), "data/slides");
+  const filenames = fs.readdirSync(presentationsDirectory);
+
+  const presentations = filenames.map((filename) => {
+    const filePath = path.join(presentationsDirectory, filename);
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    return {
+      slug: filename.replace(/\.mdx$/, ""),
+      ...data,
+      title: data.title,
+      date: data.date,
+      short: data.short,
+    };
+  });
+
+  return presentations;
+}
+
+export async function getPresentation(slug: string) {
+  const filePath = path.join(process.cwd(), "data/slides", `${slug}.mdx`);
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    title: data.title,
+    date: data.date,
+    short: data.short,
+    content,
+  };
+}
+
 export type AsyncReturnType<T extends (...args: any) => Promise<any>> =
   T extends (...args: any) => Promise<infer R> ? R : any;
 
@@ -139,3 +174,4 @@ export type BlogPostsType = AsyncReturnType<typeof getBlogPosts>;
 export type ProjectType = AsyncReturnType<typeof getProject>;
 export type ExperienceType = AsyncReturnType<typeof getExperiences>[0];
 export type BlogPostType = AsyncReturnType<typeof getBlogPost>;
+export type PresentationType = AsyncReturnType<typeof getPresentation>;
